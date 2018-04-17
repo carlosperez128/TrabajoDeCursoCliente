@@ -20,21 +20,61 @@ public class TrabajoDeCursoCliente {
         System.out.println("-----------------------------------------");
         mostrarDatos("1");
         mostrarDatos("2");
+        mostrarId("3");
+        mostrarNombre("3");
+        mostrarContraseña("3");
+        mostrarDept("3");
+        mostrarSueldo("3");
     }
     public static void mostrarDatos(String id){
         BaseDeDatos BDD = new BaseDeDatos();      
         String res = BDD.buscarPorID(String.class,id);
         JSONObject obj = new JSONObject(res);
-        String r1 = obj.toString();
-        Gson gson = new Gson();
-        Empleado emp = gson.fromJson(r1, Empleado.class);
-        System.out.println("id: "+emp.getId());
-        System.out.println("Nombre: "+emp.getNombre());
-        System.out.println("Contraseña: "+emp.getContraseña());
-        System.out.println("dept: "+emp.getDept());
-        System.out.println("sueldo: "+emp.getSueldo());
+        System.out.println("Id: "+ obj.getInt("id"));
+        System.out.println("Nombre: "+ obj.getString("nombre"));
+        System.out.println("Contraseña: "+ obj.getString("contraseña"));
+        System.out.println("Departamento: "+ obj.getString("dept"));
+        System.out.println("Sueldo: "+ obj.getDouble("sueldo"));
         System.out.println("-----------------------------------------");
     }
+        public static void mostrarContraseña(String id){
+        BaseDeDatos BDD = new BaseDeDatos();      
+        String res = BDD.buscarPorID(String.class,id);
+        JSONObject obj = new JSONObject(res);
+        System.out.println("Contraseña: "+ obj.getString("contraseña"));
+        System.out.println("-----------------------------------------");
+    }
+        public static void mostrarId(String id){
+        BaseDeDatos BDD = new BaseDeDatos();      
+        String res = BDD.buscarPorID(String.class,id);
+        JSONObject obj = new JSONObject(res);
+        System.out.println("Id: "+ obj.getInt("id"));
+        System.out.println("-----------------------------------------");
+    }
+        public static void mostrarNombre(String id){
+        BaseDeDatos BDD = new BaseDeDatos();      
+        String res = BDD.buscarPorID(String.class,id);
+        JSONObject obj = new JSONObject(res);
+        System.out.println("Nombre: "+ obj.getString("nombre"));
+        System.out.println("-----------------------------------------");
+    }
+        public static void mostrarDept(String id){
+        BaseDeDatos BDD = new BaseDeDatos();      
+        String res = BDD.buscarPorID(String.class,id);
+        JSONObject obj = new JSONObject(res);
+        System.out.println("Departamento: "+ obj.getString("dept"));
+        System.out.println("-----------------------------------------");
+    }
+        public static void mostrarSueldo(String id){
+        BaseDeDatos BDD = new BaseDeDatos();      
+        String res = BDD.buscarPorID(String.class,id);
+        JSONObject obj = new JSONObject(res);
+        System.out.println("Sueldo: "+ obj.getDouble("sueldo"));
+        System.out.println("-----------------------------------------");
+    }        
+        
+    
+    
     
     public static void mostrarDatosTodos(){
         BaseDeDatos BDD = new BaseDeDatos();      
@@ -42,15 +82,12 @@ public class TrabajoDeCursoCliente {
         JSONArray arr = new JSONArray(res);
         for(int i=0; i<arr.length();i++){
         JSONObject obj = arr.getJSONObject(i);
-        String r1 = obj.toString();
-        Gson gson = new Gson();        
-        Empleado emp = gson.fromJson(r1, Empleado.class);
-        System.out.println("id: "+emp.getId());
-        System.out.println("Nombre: "+emp.getNombre());
-        System.out.println("Contraseña: "+emp.getContraseña());
-        System.out.println("dept: "+emp.getDept());
-        System.out.println("sueldo: "+emp.getSueldo());
-        System.out.println("-----------------------------------------");
+        System.out.println("Id: "+ obj.getInt("id"));
+        System.out.println("Nombre: "+ obj.getString("nombre"));
+        System.out.println("Contraseña: "+ obj.getString("contraseña"));
+        System.out.println("Departamento: "+ obj.getString("dept"));
+        System.out.println("Sueldo: "+ obj.getDouble("sueldo"));
+        System.out.println("-----------------------------------------");       
         }
         
     }
